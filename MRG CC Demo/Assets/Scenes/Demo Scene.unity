@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
-  walkSpeed: 1
+  walkSpeed: 1.5
   jumpForce: 200
   canJump: 0
   moveLeft: 0

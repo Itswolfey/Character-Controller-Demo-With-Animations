@@ -38,17 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void MovementRead()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, rayCastDis);
-
-        if (hit)
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }
-
 
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -91,20 +80,32 @@ public class PlayerController : MonoBehaviour
 
     void MovementPerform()
     {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, rayCastDis);
+
+        if (hit)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+
+
         if (moveLeft)
         {
             //rb.AddForce(-transform.right * walkSpeed);
-            rb.velocity = new Vector2(-1, rb.velocity.y) * walkSpeed;
+            rb.velocity = new Vector2(-1 * walkSpeed, rb.velocity.y);
 
-            playerVisual.transform.localScale = new Vector2(-1, 1);
+            playerVisual.transform.localScale = new Vector2(-1, playerVisual.transform.localScale.y);
         }
 
         if (moveRight)
         {
             //rb.AddForce(transform.right * walkSpeed);
-            rb.velocity = new Vector2(1, rb.velocity.y) * walkSpeed;
+            rb.velocity = new Vector2(1 * walkSpeed, rb.velocity.y);
 
-            playerVisual.transform.localScale = new Vector2(1, 1);
+            playerVisual.transform.localScale = new Vector2(1, playerVisual.transform.localScale.y);
         }
 
         if (jumped)

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool jumped;
     [SerializeField] private Transform playerVisual;
     [SerializeField] private float rayCastDis = 0.1f;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] footSteps;
     
 
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerVisual = GameObject.Find("Player Visual").GetComponent<Transform>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,7 +76,18 @@ public class PlayerController : MonoBehaviour
            
         }
 
-        
+        /*if(rb.velocity.x != 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = footSteps[Random.Range(0, footSteps.Length)];
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+        }*/
 
     }
 
